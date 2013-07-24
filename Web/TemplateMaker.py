@@ -1,0 +1,1 @@
+# Make a site or application which allows the user to enter in various color codes, elements, dimensions and constructs a template file for a particular application like PHPBB, Invision Board, MySpace, Bebo, etc.

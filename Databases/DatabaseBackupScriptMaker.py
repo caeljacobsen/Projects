@@ -1,0 +1,1 @@
+# A program which reads a database's objects, relationships, records and stored procedures and creates a .sql file which can then be imported into another database or kept as a backup file to rebuild the database with.
