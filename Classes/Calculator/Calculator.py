@@ -12,9 +12,11 @@ Only implements the implemented operators
 #Make it a scientific calculator for added complexity.
 #Stretch Goal: Add in syntax tree for basic algebra operators
 
-import sys	#import system things
-import ast  # Abstract Syntax Tree
+import sys
 
-#Tokenizer class
-class Tokenizer(object):
-	raise NotImplementedError
+def calc():
+	raise NotImplementedError("Not implemented yet man!")
+
+if __name__ == '__main__':
+	#driver for the calculator
+	calc(sys.stdin.readline())
