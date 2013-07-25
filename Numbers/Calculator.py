@@ -10,7 +10,7 @@ Only implements the implemented operators
 #A simple calculator to do basic operators.
 #Make it a scientific calculator for added complexity.
 #Stretch Goal: Add in syntax tree for basic algebra operators, will do in Classes section
-
+# Developed for Python 3.3
 import sys	#import system things
 import ast  # Abstract Syntax Tree
 import re
