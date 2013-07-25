@@ -1,10 +1,22 @@
 # Calculates the distance between two cities and allows the user to specify a unit of distance.
-#This program may require finding coordinates for the cities like latitude and longitude.
+# This program may require finding coordinates for the cities like latitude and longitude.
 
 import sys
+import math
+global kmConversions
+kmConversions = {
+	'meter': 1000, 
+	'millimeter': 1000000, 
+	'mile':0.621371, 
+	'feet':3280.84, 
+	'inches': 39370.1, 
+	'nautmile': 0.539957,
+}
 
-def Convert(distance, initUnit, endUnit):
-
+#Converts kilometer to other unit of distance.
+def ConvertKmTo(distance, unit):
+	return distance * kmConversions[unit]
+	
 class Coord(object):
 	def __init__(self, deg = 0, min = 0, sec = 0, sign = "+"):
 		self.degree = deg
@@ -31,21 +43,29 @@ class EarthCoord(object):
 		self.longitude.degree = deg
 		self.longitude.minute = min
 		self.longitude.second = sec
-	# measures the distance between itself and another coordinate
+	# measures the distance between itself and another coordinate measured in kilometers
 	def distance(self, coordinate):
 		r = 6371 #Average Radius of the earth
 		#implement Haversine Distance formula
 		lat1 = math.radians(self.latitude.getDegree())
-		lat2 = math.radians(coordindate.getDegree())
-		deltaLat = math.radians(self.latitude.getDegree() - coordinate.getDegree())
-		deltaLong = math.radians(self.longitude.getDegree() - coordinate.getDegree())
+		lat2 = math.radians(coordinate.latitude.getDegree())
+		deltaLat = math.radians(self.latitude.getDegree() - coordinate.latitude.getDegree())
+		deltaLong = math.radians(self.longitude.getDegree() - coordinate.longitude.getDegree())
 		a = math.sin(deltaLat/2) ** 2 + math.cos(lat1) * math.cos(lat2) * (math.sin(deltaLong/2) ** 2)
 		c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
 		distance = r * c
 		return distance
 
+#test Module
 if __name__ == '__main__':
 	portland = EarthCoord([45,52,36,'+'],[122,67,50,'-'])
 	denver = EarthCoord([39,73,92,'+'], [104,98,42,'-'])
 	print("The distance from Portland to Denver is:")
-	print(portland.distance(denver))
+	distance = portland.distance(denver)
+	print(distance)
+	print(ConvertKmTo(distance, 'meter'))
+	print(ConvertKmTo(distance, 'millimeter'))
+	print(ConvertKmTo(distance, 'mile'))
+	print(ConvertKmTo(distance, 'feet'))
+	print(ConvertKmTo(distance, 'inches'))
+	print(ConvertKmTo(distance, 'nautmile'))
