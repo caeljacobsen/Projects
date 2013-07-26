@@ -57,15 +57,16 @@ class EarthCoord(object):
 		return distance
 
 #test Module
+#module works, too lazy to make a UI for it.
 if __name__ == '__main__':
 	portland = EarthCoord([45,52,36,'+'],[122,67,50,'-'])
 	denver = EarthCoord([39,73,92,'+'], [104,98,42,'-'])
 	print("The distance from Portland to Denver is:")
 	distance = portland.distance(denver)
-	print(distance)
-	print(ConvertKmTo(distance, 'meter'))
-	print(ConvertKmTo(distance, 'millimeter'))
-	print(ConvertKmTo(distance, 'mile'))
-	print(ConvertKmTo(distance, 'feet'))
-	print(ConvertKmTo(distance, 'inches'))
-	print(ConvertKmTo(distance, 'nautmile'))
+	print(str( distance ) + " km")
+	print(str( ConvertKmTo(distance, 'meter') ) + " m")
+	print(str( ConvertKmTo(distance, 'millimeter') ) + " mm")
+	print(str( ConvertKmTo(distance, 'mile') )+ " miles")
+	print(str( ConvertKmTo(distance, 'feet') )+ " feet")
+	print(str( ConvertKmTo(distance, 'inches') )+ " inches")
+	print(str( ConvertKmTo(distance, 'nautmile') )+ " nautical miles")
