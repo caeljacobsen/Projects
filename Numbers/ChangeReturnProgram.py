@@ -4,12 +4,22 @@
 import sys
 
 class USD(object):
+	"""
+	Object that contains the definition for the most used United States Dollar currency
+	Can return the best change when given a specific money value (in dollars)
+	"""
 	def __init__(self):
 		self.coins = ['Hundred Dollar', 'Fifty Dollar', 'Twenty Dollar', 'Ten Dollar', 'Five Dollar', 'Dollar','Quarter','Dime','Nickel','Penny']
 		self.coinVals = [10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1]
 	#takes two float values
 	#returns list containing tuples that contain (amount of money, name of coin)
 	def getBestChange(self, cost, moneyGiven):
+		"""
+		This function calculates the best change for a given transaction.
+		cost is the amount that was to be charged
+		moneyGiven is the amount that was paid.
+		Returns the best change available given the currency
+		"""
 		change = []
 		#print(str(cost) + "," + str(moneyGiven))
 		moneyGiven = moneyGiven - cost

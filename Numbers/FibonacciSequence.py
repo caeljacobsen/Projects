@@ -1,11 +1,14 @@
 # Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
 import sys
 
-def fibonacci(degrees):
+def fibonacci(n):
+	"""
+	Gets returns the nth number in the fibonacci sequence
+	"""
 	last = 0
 	number = 1
 	deg = 0
-	while(deg < degrees):
+	while(deg < n):
 		temp = number
 		number = last + number
 		last = temp

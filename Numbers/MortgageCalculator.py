@@ -4,6 +4,10 @@
 import sys
 #fixed term in months
 def getMortgagePayment(principle, apr, terms):
+	"""
+	Calculates a mortagage using the standard loan formula
+	Returns the montly payment for the mortgage
+	"""
 	monthlyIntr = apr/12
 	#use loan formula thing
 	return (principle*monthlyIntr * (1+monthlyIntr)**terms) / ((1+monthlyIntr)**terms-1)#(apr/12) * (1/1-(1+apr/12) ** terms ) * principle

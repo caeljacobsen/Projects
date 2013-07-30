@@ -5,7 +5,9 @@
 
 class Graph(object):
 	"""
-		Weighted Graph
+		This is an object that defines a weighted graph's representation for use by traversal algorithms.
+		This class can add and remove nodes and edges to prepare for traversal by any traversal algorithm.
+		Note: This does not implement the traversals
 	"""
 	def __init__(self):
 		self.nodes = set()
@@ -45,6 +47,9 @@ class Graph(object):
 	
 # Install
 def dijkstra(graph, start):
+	"""
+	Implements Dijkstra's Graph Traversal Algorithm for determining the best path in a graph
+	"""
 	visited = {start: 0}	# Visited contains the distance from all nodes that have been visited
 							# Each time we visit a node we'll add it to visited and add the distance/weight as a value to the key
 	currentNode = start		# Current node is start
@@ -76,6 +81,10 @@ def dijkstra(graph, start):
 	return visited, path
 	
 def getShortestPath(graph, start, end):
+	"""
+	Uses the Dijkstras Algorithm to find the best path traversal in a weighted graph
+	Returns the optimal route
+	"""
 	distances, paths = dijkstra(graph, start)
 	route = [end]
 	

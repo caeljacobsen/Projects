@@ -11,13 +11,22 @@ import base64
 
 #Reseller is the plaintext ID given to each different 
 #date time is the current date 
-def generateSerialKey(resellerId, batch, number):
+def generateSerialKey(resellerId, productNumber, batch, number):
+	""" 
+	This function takes a Merchant's ResellerID, the product number, batch number and unit number and 
+	Returns a unique serial key from it using the date.
+	"""
 	date = datetime.date.isoformat(datetime.date.today()).replace("-", "")
-	serialKey = date + "-" + resellerId + "-" + batch + "-" + number
+	serialKey = date + "-" + resellerId + "-" + productNumber + "-" + batch + "-" + number
 	return serialKey
 
 #Returns base 64 hashed string. formatted appropriately for a CD Key
 def hashSerial(serialKey):
+	"""
+	This function takes a unique serial key and runs it through 
+	a hashing function to secure and hide the actual serial information. 
+	Returns the hashed version of the serial key code.
+	"""
 	formatSpacing = 10	#magic formatting number!
 	hash = hashlib.sha1()	#Good enough for my uses now to get a shortish key
 							#Revisit with a better algorithm to get a shortish key
@@ -32,10 +41,9 @@ def hashSerial(serialKey):
 	
 	
 if __name__ == '__main__':
-	print(  datetime.date.isoformat(datetime.date.today()).replace("-", ""))
 	assert(	datetime.date.isoformat(datetime.date.today()).replace("-", "") + "-" +
-			"12345" + "-" + "00010" + "-" + "1523" == 
-			generateSerialKey("12345", "00010", "1523") )
-	print(	generateSerialKey("12345", "00010", "1523")	)
-	print(	hashSerial( generateSerialKey( "12345", "00010", "1523" ) ) )
+			"12345" + "-" +  "8732" + "-" + "00010" + "-" + "1523" == 
+			generateSerialKey("12345", "8732", "00010", "1523") )
+	print(	generateSerialKey("12345", "8732", "00010", "1523")	)
+	print(	hashSerial( generateSerialKey( "12345", "00010", "8732" , "1523" ) ) )
 	print( "Success" )

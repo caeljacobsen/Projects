@@ -16,14 +16,23 @@ import ast  # Abstract Syntax Tree
 import re
 #addition implementation
 def add(opa, opb):
+	"""
+	Basic addition function
+	"""
 	return opa + opb
 
 #subtraction implementation
 def sub(opa, opb):
+	"""
+	Basic subtraction function
+	"""
 	return opa - opb
 	
 #multiplication implementation
 def mul(opa, opb):
+	"""
+	Basic multiplication function
+	"""
 	result = 0
 	if(opb >=0):
 		for i in range(opb):
@@ -35,6 +44,9 @@ def mul(opa, opb):
 	
 #division implementation, simple
 def div(opa, opb):
+	"""
+	Basic division function
+	"""
 	quo = 0
 	if(opb != 0):
 		while(opa >= opb):
@@ -45,7 +57,10 @@ def div(opa, opb):
 		raise DivideByZeroError("Silly person, you divided by 0")
 	return quo, rem
 	
-def exp(opa, opb):
+def exp(opa, opb):	
+	"""
+	Basic exponentiation function
+	"""
 	result = 1
 	#if operand b is greater than 0
 	if(opb >= 0):
@@ -59,6 +74,9 @@ def exp(opa, opb):
 	
 
 def calc(expression):
+	"""
+	Parses a simple arithmetic equation and returns the value
+	"""
 	print("Expression to parse: " + expression)
 	expression = expression.split(' ')
 	if( expression[1] == '+'):

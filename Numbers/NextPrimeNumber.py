@@ -5,6 +5,10 @@ testPrimes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61
 #Uses concept that a prime is a number than is not divisible by any other prime.
 from math import sqrt
 def getNPrime(n):
+	"""
+	Generates n prime numbers using the standard comparison of the prime with every 
+	other prime number previously found and maintaining a list of them.
+	"""
 	primesList = [2] # Two is a given prime
 	numberToTest = 3 # Three is the next number to test
 	while(len(primesList) < n):
@@ -28,6 +32,11 @@ def getNPrime(n):
 
 #Same as above but uses generators instead
 def genNPrimes():	
+	"""
+	Consists of the same behavior as getNPrimes(n) however, this time it acts like a generator
+	for memory conservation purposes. This means that it is much more memory efficient when determining primes.
+	It can however, run out of memory space if enough primes are calculated due to caching of primes that are found.
+	"""
 	primesList = [2] # Two is a given prime
 	yield(2)
 	numberToTest = 3 # Three is the next number to test
@@ -51,7 +60,9 @@ def genNPrimes():
 			yield(numberToTest)
 		numberToTest = numberToTest + 1
 	return primesList
+	
 if __name__ == '__main__':
+	#test code
 	print(getNPrime(50))
 	assert(testPrimes == getNPrime(168))
 #	print(getNPrime(100000))

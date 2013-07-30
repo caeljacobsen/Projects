@@ -7,9 +7,13 @@ import sys
 #takes string
 #returns 1 if valid, 0 if not
 def creditCardValidate(cardNumber):
+	"""
+	Uses the Luhn checksum algorithm (industry standard?) to validate the number.
+	Takes a String parameter that represents the card number
+	returns a 0 if false a 1 if True
+	"""
 	sum = 0
 	oddOrEven = len(cardNumber) & 1
-	
 	for i in range(len(cardNumber)):
 		digit = int(cardNumber[i])
 		

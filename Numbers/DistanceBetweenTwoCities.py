@@ -15,9 +15,15 @@ kmConversions = {
 
 #Converts kilometer to other unit of distance.
 def ConvertKmTo(distance, unit):
+	"""
+	Converts kilometers into any unit of distance defined in kmConversions and returns that value
+	"""
 	return distance * kmConversions[unit]
 	
 class Coord(object):
+	"""
+	Coordinate class for use with latitude and longtitude calculation and representations.
+	"""
 	def __init__(self, deg = 0, min = 0, sec = 0, sign = "+"):
 		self.degree = deg
 		self.minute = min
@@ -28,6 +34,9 @@ class Coord(object):
 		return self.degree + self.minute/60 + self.second/60/60
 	
 class EarthCoord(object):
+	"""
+	Representation of the earth coordinates of a location on the planet earth
+	"""
 	def __init__(self, lat, long):
 		if(len(list(lat)) != 4):
 			lat = [0, 0, 0, '+']
@@ -63,10 +72,10 @@ if __name__ == '__main__':
 	denver = EarthCoord([39,73,92,'+'], [104,98,42,'-'])
 	print("The distance from Portland to Denver is:")
 	distance = portland.distance(denver)
-	print(str( distance ) + " km")
-	print(str( ConvertKmTo(distance, 'meter') ) + " m")
-	print(str( ConvertKmTo(distance, 'millimeter') ) + " mm")
-	print(str( ConvertKmTo(distance, 'mile') )+ " miles")
-	print(str( ConvertKmTo(distance, 'feet') )+ " feet")
-	print(str( ConvertKmTo(distance, 'inches') )+ " inches")
-	print(str( ConvertKmTo(distance, 'nautmile') )+ " nautical miles")
+	print(str( round(distance, 2 ) ) + " km")
+	print(str( round(ConvertKmTo(distance, 'meter'), 2 ) ) + " m")
+	print(str( round(ConvertKmTo(distance, 'millimeter'), 2 ) ) + " mm")
+	print(str( round(ConvertKmTo(distance, 'mile'), 2 ) ) + " miles")
+	print(str( round(ConvertKmTo(distance, 'feet'), 2 ) ) + " feet")
+	print(str( round(ConvertKmTo(distance, 'inches'), 2 ) ) + " inches")
+	print(str( round(ConvertKmTo(distance, 'nautmile'), 2 ) ) + " nautical miles")

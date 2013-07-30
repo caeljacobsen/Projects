@@ -4,6 +4,10 @@ from math import sqrt
 from NextPrimeNumber import genNPrimes
 #simple unoptimized is prime function. Can only find one prime number
 def isPrime(number):
+	"""
+	Determines if a number is prime by walking through all numbers up to the square root of the number in question.
+	Returns true if it is a prime, returns false if it is not
+	"""
 	if number == 2 :
 		return True
 	if number % 2 == 0 :
@@ -17,8 +21,13 @@ def isPrime(number):
 
 #returns a list of the prime factors for number
 def getPrimeFactors(number):
+	"""
+	Takes a integer as a parameter
+	Begins to generate prime numbers and will calculate the prime factors
+	Returns a tuple with all the prime factors of the device.
+	"""
 	primes = genNPrimes()
-	pnumber = primes.__next__()
+	pnumber = primes.__next__() #get first prime number (2)
 	factors = []
 	while True :
 		print(str(number) + ", " + str(pnumber))

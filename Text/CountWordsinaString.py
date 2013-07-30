@@ -4,14 +4,27 @@
 import sys
 
 def getWordCount(string):
+	"""
+	Function used to get the number of words in a string. A word is delimited by spaces. 
+	The string parameter should be a single line string. Two calls would be required for multiple lines
+	Words with any other punctuation are treated as a whole word until the next space is seen
+	"""
 	list = string.split(' ') #spaces denote separation between words
 	return len(list)
 
 def readFile(filename):
+	"""
+	Function used to open and read a file specified by the user and count the words in the file.
+	"""
 	wordCount = 0
-	file = open(filename)
-	for line in file:		
-		wordCount += getWordCount(line)	
+	try:
+		print(filename)
+		filename = filename.replace('\n', '') #Clear out extra line feeds if there
+		file = open(filename)
+		for line in file:		
+			wordCount += getWordCount(line)	
+	except IOError as err:
+		print("I/O error: {0}".format(err))
 	return wordCount
 	
 if __name__ == '__main__':

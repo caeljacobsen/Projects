@@ -1,9 +1,16 @@
 # Functions for encrypting and decrypting data messages.
-#Then send them to a friend.
+# Then send them to a friend.
 import sys
 import re
 
 def vigenereEncrypt(key, plaintext):
+	"""
+	Encrypts a plaintext string using Vigenere's Encryption Cipher with the associated key
+	If the string contains anything other than the letters of the english alphabet, it will raise a ValueError
+	Returns an encrypted utf-8 string.
+	"""
+	if(re.match("^[a-zA-Z]+$", plaintext) == None):
+		raise ValueError("Does not accept Only accepts information from A-Z")
 	ciphertext = bytearray("", "utf-8")
 	key = bytearray(key.upper(), "utf-8")
 	plaintext = bytearray(plaintext.upper(), "utf-8") #capitalize the word for the sake of processing
@@ -20,6 +27,13 @@ def vigenereEncrypt(key, plaintext):
 	return ciphertext.decode("utf-8")
 
 def vigenereDecrypt(key, ciphertext):
+	"""
+	Decrypts a ciphertext string using Vigenere's Encryption Cipher with the associated key
+	If the string contains anything other than the letters of the english alphabet, it will raise a ValueError
+	Returns a plaintext utf-8 string.
+	"""
+	if(re.match("^[a-zA-Z]+$", ciphertext) == None):
+		raise ValueError("Does not accept Only accepts information from A-Z")
 	plaintext = bytearray("", "utf-8")
 	key = bytearray(key.upper(), "utf-8")
 	ciphertext = bytearray(ciphertext.upper(), "utf-8") #Capitalize the word for the sake of processing
@@ -30,8 +44,12 @@ def vigenereDecrypt(key, ciphertext):
 	
 	return plaintext.decode("utf-8")
 
-#aka stream cipher
 def vernamEncrypt(key, plaintext):
+	"""
+	Encrypts a ciphertext string using Vernam's Encryption Cipher aka Stream Cipher with the associated key
+	If the plaintext string and the key string are not exactly the same length, it will raise a ValueError
+	Returns a ciphertext utf-8 string.
+	"""
 	if(len(key) != len(plaintext)):
 		raise ValueError("Key length and text length is not the same")
 	ciphertext = bytearray("", "utf-8")
@@ -43,6 +61,11 @@ def vernamEncrypt(key, plaintext):
 	return ciphertext.decode("utf-8")
 	
 def vernamDecrypt(key, ciphertext):
+	"""
+	Decrypts a ciphertext string using Vernam's Encryption Cipher aka Stream Cipher  with the associated key
+	If the plaintext string and the key string are not exactly the same length, it will raise a ValueError
+	Returns a plaintext utf-8 string.
+	"""
 	if( len(key) != len(ciphertext) ):
 		raise ValueError("Key length and text length is not the same")
 	plaintext = bytearray("", "utf-8")
@@ -53,8 +76,12 @@ def vernamDecrypt(key, ciphertext):
 		
 	return plaintext.decode("utf-8")
 
-#classic cipher demonstration
 def caesarEncrypt(key, plaintext):
+	"""
+	Encrypts a plaintext string using a Caeser Shift Cipher with the associated key
+	If the string contains anything other than the letters of the english alphabet, it will raise a ValueError
+	Returns an encrypted utf-8 string.
+	"""
 	if(re.match("^[a-zA-Z]+$", plaintext) == None):
 		raise ValueError("Does not accept Only accepts information from A-Z")
 	ciphertext = bytearray(plaintext.upper(), "utf-8")
@@ -66,11 +93,16 @@ def caesarEncrypt(key, plaintext):
 	
 	return ciphertext.decode("utf-8")
 	
-def caesarDecrypt(key, encryptedtext):
-	plaintext = bytearray(encryptedtext.upper(), "utf-8")
+def caesarDecrypt(key, ciphertext):
+	"""
+	Decrypts a ciphertext string using Vigenere's Encryption Cipher with the associated key
+	If the string contains anything other than the letters of the english alphabet, it will raise a ValueError
+	Returns a plaintext utf-8 string.
+	"""
+	if(re.match("^[a-zA-Z]+$", ciphertext) == None):
+		raise ValueError("Does not accept Only accepts information from A-Z")
+	plaintext = bytearray(ciphertext.upper(), "utf-8")
 	for i in range( len( plaintext ) ):
-		if(plaintext[i] < 65):
-			continue
 		#A = 65, remove and re-add for the math to work
 		plaintext[i] -= 65
 		plaintext[i] = ( (plaintext[i] - key ) % 26 )
@@ -96,7 +128,7 @@ if __name__ == '__main__':
 	assert( vernamDecrypt( key, vernamEncrypt( key, testMessage ) ) == testMessage)
 	
 	#Test the vignere cipher
-	print(vigenereEncrypt("LEMON", "ATTACKATDAWN"))
+	print( vigenereEncrypt("LEMON", "ATTACKATDAWN"))
 	assert( vigenereEncrypt("LEMON", "ATTACKATDAWN") == "LXFOPVEFRNHR" )
 	assert( vigenereDecrypt("LEMON", "LXFOPVEFRNHR") == "ATTACKATDAWN" )
 	print("Success!")

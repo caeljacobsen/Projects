@@ -5,6 +5,11 @@ import sys
 #Normally wouldn't make my own method because it's built in
 #But why not? xD
 def manReverse(string):
+	"""
+	Manually built string reversal function. 
+	This is likely slower than string[::-1] or anything built into python. 
+	However, it was still fun to make :D
+	"""
 	newStr = ""
 	# iterate backwards through the string
 	for i in range(len(string), 0 , -1):

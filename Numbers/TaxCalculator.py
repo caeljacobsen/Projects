@@ -4,6 +4,9 @@
 import sys
 
 def getSalesTax(cost, tax):
+	"""
+	Returns sales tax for a purchased based on the tax percentage and the cost
+	"""
 	return round(cost * tax,2)
 
 if __name__ == '__main__':

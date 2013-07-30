@@ -3,8 +3,16 @@
 import sys
 
 def rectarea(width, length):
+	"""
+	Returns the area of a square segment given two
+	measurements
+	"""
 	return width*length
 def cost(surfaceArea, costPerUnit):
+	"""
+	Returns the cost of covering an area by the cost per square 
+	unit of material to cover the floor with.
+	"""
 	return surfaceArea * costPerUnit
 	
 if __name__ == '__main__':
