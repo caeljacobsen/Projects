@@ -39,8 +39,8 @@ def superiorbubblesort(array = []):
 			index += 1
 		print array
 	return array
-print "Acquired array:", array
-print "Bubble sort activate!"
+print( "Acquired array: " + array )
+print( "Bubble sort activate!" )
 array = superiorbubblesort(array)
-print "Bubble sort complete!"
-print array
+print( "Bubble sort complete!" )
+print( array )

@@ -18,10 +18,10 @@ def quicksort(array = []):
 		else:
 			greater.append(array[i])
 #	print less, "  ", pivotValue, " ", greater
-	return (quicksort(less) + [pivotValue] + quicksort(greater))
+	#return (quicksort(less) + [pivotValue] + quicksort(greater))
 
-print "Acquired array:", array
-print "Quick sort activate!"
+print("Acquired array: " + str(array) )
+print("Quick sort activate!" )
 array = quicksort(array)
-print "Quick sort complete!"
-print array
+print( "Quick sort complete!" )
+print( array )

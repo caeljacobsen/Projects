@@ -33,11 +33,11 @@ def mergesort(array = []):
 	right = array[midpoint:]
 	left = mergesort(left)
 	right = mergesort(right)
-	print left, right
+	#print left, right
 	return merge(left, right)
 
-print "Acquired array:", array
-print "Merge sort activate!"
+print("Acquired array:" + array)
+print("Merge sort activate!")
 array = mergesort(array)
-print "Merge sort complete!"
-print array
+print("Merge sort complete!")
+print(array)
